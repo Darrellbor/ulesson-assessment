@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 
+//components
+import Header from "../../components/Header";
+
 class Dashboard extends Component {
     render() {
         return (
-            <div>
-                
+            <div className="Dashboard">
+                <Header />
             </div>
         )
     }

@@ -1,0 +1,28 @@
+.Header {
+  min-height: 50px;
+  background-color: $brand-color;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+
+  & > svg:first-of-type {
+    margin-top: 11px;
+    margin-left: 10px;
+    margin-right: 20px;
+  }
+
+  &__profile {
+    display: flex;
+
+    & svg {
+      max-width: 100%;
+    }
+
+    &__name {
+      color: #fff;
+      margin-top: 12px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
