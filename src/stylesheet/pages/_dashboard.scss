@@ -5,4 +5,76 @@
     url(../../assets/images/circle-bg.svg);
   background-repeat: no-repeat, no-repeat;
   background-position: left top, right bottom;
+
+  &__content {
+    margin: auto;
+    padding: 18px;
+    max-width: 1150px;
+
+    & h1:first-of-type {
+      margin: 30px 0;
+    }
+  }
+
+  &__subjects {
+    display: flex;
+    flex-wrap: wrap;
+
+    & a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &__subject {
+    &__math {
+      @include dash-subject(
+        $brand-color-red,
+        "../../assets/images/math-bg.svg",
+        top right
+      );
+    }
+
+    &__phy {
+      @include dash-subject(
+        $brand-color-purple,
+        "../../assets/images/phy-bg.svg",
+        bottom left
+      );
+    }
+
+    &__chem {
+      @include dash-subject(
+        $brand-color-orange,
+        "../../assets/images/chem-bg.svg",
+        right bottom
+      );
+    }
+
+    &__bio {
+      @include dash-subject(
+        $brand-color-green,
+        "../../assets/images/bio-bg.svg",
+        right
+      );
+    }
+
+    &__eng {
+      @include dash-subject(
+        $brand-color-blue,
+        "../../assets/images/eng-bg.svg",
+        bottom left
+      );
+    }
+  }
+}
+
+@media (max-width: $breakpoint-small-screens) {
+  .Dashboard {
+    &__subjects {
+      flex-wrap: nowrap;
+      max-width: 100%;
+      overflow: auto;
+    }
+  }
 }

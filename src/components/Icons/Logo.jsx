@@ -1,10 +1,11 @@
-import React from "react";
+//@flow
+import React, { type Node } from "react";
 
 type LogoProps = {
-  color: String,
+  color: string,
 };
 
-const Logo = (props: LogoProps) => {
+const Logo = (props: LogoProps): Node => {
   return (
     <svg width="149" height="24" viewBox="0 0 149 24" fill="none">
       <path

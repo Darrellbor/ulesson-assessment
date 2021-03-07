@@ -1,11 +1,11 @@
 //@flow
-import React from "react";
+import React, { type Node } from "react";
 
 //icons
 import Logo from "../Icons/Logo";
 import Avatar from "../Icons/Avatar";
 
-const Header = () => {
+const Header = (): Node => {
   return (
     <div className="Header">
       <Logo />

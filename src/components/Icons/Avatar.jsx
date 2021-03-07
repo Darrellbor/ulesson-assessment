@@ -1,6 +1,7 @@
-import React from "react";
+//@flow
+import React, { type Node } from "react";
 
-const Avatar = () => {
+const Avatar = (): Node => {
   return (
     <svg width="49" height="49" viewBox="0 0 49 49" fill="none">
       <circle cx="24.5" cy="24.5" r="24.5" fill="white" />
