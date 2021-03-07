@@ -1,0 +1,8 @@
+.Dashboard {
+  min-height: 800px;
+  background-color: $background-color;
+  background-image: url(../../assets/images/hand-bg.svg),
+    url(../../assets/images/circle-bg.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, right bottom;
+}
