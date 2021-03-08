@@ -177,7 +177,7 @@ class VideoPlayer extends Component {
                     isPaused && "VideoPlayer__video__main--paused"
                   }`}
                 >
-                  <video id="lesson_vid" width="400">
+                  <video id="lesson_vid" width="400" preload="true">
                     <source src={`${lesson.media_url}#t=1`} type="video/mp4" />
                   </video>
                   <div className="VideoPlayer__video__controls">

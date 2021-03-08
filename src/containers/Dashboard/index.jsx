@@ -6,6 +6,7 @@ import Context from "../../store/context";
 
 //components
 import Header from "../../components/Header";
+import Button from "../../components/Button";
 
 //icons
 import MathIcon from "../../components/Icons/MathIcon";
@@ -15,8 +16,13 @@ import BioIcon from "../../components/Icons/BioIcon";
 import EngIcon from "../../components/Icons/EngIcon";
 
 class Dashboard extends Component {
+  state = {
+    lessons: [],
+  };
+
   async componentDidMount() {
     await this.setSubjects();
+    this.getLessons();
   }
 
   setSubjects = async () => {
@@ -59,6 +65,57 @@ class Dashboard extends Component {
     }
   };
 
+  getLessons = () => {
+    if (
+      this.context &&
+      this.context.subjects &&
+      this.context.subjects.data &&
+      this.context.subjects.data.subjects
+    ) {
+      let lessons = [],
+        temp = [],
+        selected = [];
+      const subjects = this.context.subjects.data.subjects;
+
+      for (let subject of subjects) {
+        for (let chapter of subject.chapters) {
+          temp = [...temp, ...chapter.lessons];
+        }
+      }
+
+      //mock recently watched topics
+      for (let i = 0; i < 5; i++) {
+        const randId = Math.floor(Math.random() * temp.length);
+        console.log(
+          randId,
+          selected.indexOf(randId),
+          selected.indexOf(randId) < 0
+        );
+
+        if (selected.indexOf(randId) < 0) {
+          lessons.push(temp[randId]);
+        }
+
+        selected.push(randId);
+      }
+
+      this.setState({ lessons });
+    }
+  };
+
+  getSubject = (id) => {
+    if (
+      this.context &&
+      this.context.subjects &&
+      this.context.subjects.data &&
+      this.context.subjects.data.subjects
+    ) {
+      const subjects = this.context.subjects.data.subjects;
+
+      return subjects.filter((subject) => subject.id === parseInt(id, 10))[0];
+    }
+  };
+
   render() {
     const subjects =
       this.context &&
@@ -67,6 +124,7 @@ class Dashboard extends Component {
       this.context.subjects.data.subjects
         ? this.context.subjects.data.subjects
         : null;
+    const lessons = this.state.lessons;
 
     return (
       <div className="Dashboard">
@@ -100,6 +158,40 @@ class Dashboard extends Component {
                   </div>
                 </Link>
               ))}
+          </div>{" "}
+          <br />
+          <div className="Dashboard__recent">
+            <div className="Dashboard__recent__header">
+              <h3>Recently watched topics</h3>
+              <Button type="button">See All</Button>
+            </div>
+
+            <div className="Dashboard__recent__items">
+              {lessons &&
+                lessons.map((lesson) => (
+                  <Link
+                    key={lesson.id}
+                    to={`/video/${lesson.subject_id}/${lesson.chapter_id}/${lesson.id}`}
+                  >
+                    <div className="Dashboard__recent__item">
+                      <div className="Dashboard__recent__item__img">
+                        <img src={lesson.icon} alt="Comparison" />
+                      </div>
+                      <br />
+                      <div
+                        className={`Dashboard__recent__item__subject Dashboard__recent__item__subject--${this.setClassName(
+                          this.getSubject(lesson.subject_id).name
+                        )}`}
+                      >
+                        {this.getSubject(lesson.subject_id).name}
+                      </div>
+                      <div className="Dashboard__recent__item__title">
+                        {lesson.name}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+            </div>
           </div>
         </div>
       </div>

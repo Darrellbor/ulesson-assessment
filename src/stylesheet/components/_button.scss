@@ -20,9 +20,11 @@
   }
 
   &--brand {
-    background-color: $brand-color;
+    background-color: $brand-color-red;
     color: #fff;
-    border: 1px solid #6f9656;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.7s ease-in-out;
 
     &:hover {
       background-color: #6f9656;

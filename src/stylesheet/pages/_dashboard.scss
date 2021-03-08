@@ -67,6 +67,84 @@
       );
     }
   }
+
+  &__recent {
+    &__header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin-top: 30px;
+
+      & button {
+        padding: 6px;
+        min-width: 12%;
+      }
+    }
+
+    &__items {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1000px;
+    }
+
+    & a {
+      text-decoration: none;
+    }
+
+    &__item {
+      margin: 30px 20px;
+      cursor: pointer;
+
+      &__img {
+        max-width: 210px;
+
+        & img {
+          max-width: 100%;
+          max-height: 100%;
+          width: 210px;
+          height: 179px;
+        }
+      }
+
+      &__subject {
+        text-transform: capitalize;
+        font-weight: 600;
+        margin-bottom: 10px;
+        font-size: 16px;
+
+        &--math {
+          color: $brand-color-red;
+        }
+
+        &--phy {
+          color: $brand-color-purple;
+        }
+
+        &--chem {
+          color: $brand-color-orange;
+        }
+
+        &--bio {
+          color: $brand-color-green;
+        }
+
+        &--eng {
+          color: $brand-color-blue;
+        }
+      }
+
+      &__title {
+        font-weight: 700;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 210px;
+        font-size: 18px;
+        color: $brand-color;
+      }
+    }
+  }
 }
 
 @media (max-width: $breakpoint-small-screens) {
