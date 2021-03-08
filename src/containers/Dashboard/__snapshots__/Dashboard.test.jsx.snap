@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Component renders correctly 1`] = `
+<div
+  className="Dashboard"
+>
+  <Header />
+  <br />
+  <div
+    className="Dashboard__content"
+  >
+    <h1>
+      Hello Darrel,
+    </h1>
+    <br />
+    <div
+      className="Dashboard__subjects"
+    />
+     
+    <br />
+    <div
+      className="Dashboard__recent"
+    >
+      <div
+        className="Dashboard__recent__header"
+      >
+        <h3>
+          Recently watched topics
+        </h3>
+        <Button
+          color="brand"
+          type="button"
+        >
+          See All
+        </Button>
+      </div>
+      <div
+        className="Dashboard__recent__items"
+      />
+    </div>
+  </div>
+</div>
+`;
