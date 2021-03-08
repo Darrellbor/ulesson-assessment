@@ -10,9 +10,6 @@ import Header from "../../components/Header";
 //icons
 import ArrowBack from "../../components/Icons/ArrowBack";
 
-//images
-import ComparisonImg from "../../assets/images/comparison.jpg";
-
 class Chapters extends Component {
   state = {
     subject: {},

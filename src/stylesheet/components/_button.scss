@@ -1,0 +1,49 @@
+.Button {
+  box-sizing: border-box;
+  border-radius: 9px;
+  padding: 13px;
+  text-decoration: none;
+  min-width: 20%;
+  transition: all 0.3s ease-in-out;
+  font-weight: 300;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--invisible {
+    visibility: hidden;
+  }
+
+  &--visible {
+    visibility: visible;
+  }
+
+  &--brand {
+    background-color: $brand-color;
+    color: #fff;
+    border: 1px solid #6f9656;
+
+    &:hover {
+      background-color: #6f9656;
+    }
+
+    &--pattern {
+      background-image: url(../../assets/images/video-btn-bg.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: $brand-color-orange;
+      color: #fff;
+      border: none;
+
+      &:hover {
+        background-position: bottom center;
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: #6b994c !important;
+  }
+}
