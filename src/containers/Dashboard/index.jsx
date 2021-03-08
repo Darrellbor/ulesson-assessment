@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+//context
+import Context from "../../store/context";
+
 //components
 import Header from "../../components/Header";
 
@@ -12,6 +15,16 @@ import BioIcon from "../../components/Icons/BioIcon";
 import EngIcon from "../../components/Icons/EngIcon";
 
 class Dashboard extends Component {
+  async componentDidMount() {
+    await this.setSubjects();
+  }
+
+  setSubjects = async () => {
+    if (!this.context.subjects || this.context.subjects.length === 0) {
+      await this.context.setSubjects();
+    }
+  };
+
   render() {
     return (
       <div className="Dashboard">
@@ -69,5 +82,7 @@ class Dashboard extends Component {
     );
   }
 }
+
+Dashboard.contextType = Context;
 
 export default Dashboard;
