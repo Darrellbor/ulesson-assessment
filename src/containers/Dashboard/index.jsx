@@ -86,11 +86,6 @@ class Dashboard extends Component {
       //mock recently watched topics
       for (let i = 0; i < 5; i++) {
         const randId = Math.floor(Math.random() * temp.length);
-        console.log(
-          randId,
-          selected.indexOf(randId),
-          selected.indexOf(randId) < 0
-        );
 
         if (selected.indexOf(randId) < 0) {
           lessons.push(temp[randId]);
