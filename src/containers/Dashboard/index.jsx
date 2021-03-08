@@ -25,7 +25,49 @@ class Dashboard extends Component {
     }
   };
 
+  setIcon = (name) => {
+    switch (name) {
+      case "Mathematics":
+        return <MathIcon />;
+      case "Physics":
+        return <PhyIcon />;
+      case "Chemistry":
+        return <ChemIcon />;
+      case "Biology":
+        return <BioIcon />;
+      case "English":
+        return <EngIcon />;
+      default:
+        break;
+    }
+  };
+
+  setClassName = (name) => {
+    switch (name) {
+      case "Mathematics":
+        return "math";
+      case "Physics":
+        return "phy";
+      case "Chemistry":
+        return "chem";
+      case "Biology":
+        return "bio";
+      case "English":
+        return "eng";
+      default:
+        break;
+    }
+  };
+
   render() {
+    const subjects =
+      this.context &&
+      this.context.subjects &&
+      this.context.subjects.data &&
+      this.context.subjects.data.subjects
+        ? this.context.subjects.data.subjects
+        : null;
+
     return (
       <div className="Dashboard">
         <Header />
@@ -35,47 +77,29 @@ class Dashboard extends Component {
           <h1>Hello Darrel,</h1>
           <br />
           <div className="Dashboard__subjects">
-            <Link to={`/chapters/8`}>
-              <div className="Dashboard__subject__math">
-                <MathIcon />
-                <br />
-                <div className="Dashboard__subject__text Dashboard__subject__text--math">
-                  Mathematics
-                </div>
-              </div>
-            </Link>
-
-            <Link to={`/chapters/9`}>
-              <div className="Dashboard__subject__phy">
-                <PhyIcon />
-                <br />
-                <div className="Dashboard__subject__text">Physics</div>
-              </div>
-            </Link>
-
-            <Link to={`/chapters/5`}>
-              <div className="Dashboard__subject__chem">
-                <ChemIcon />
-                <br />
-                <div className="Dashboard__subject__text">Chemistry</div>
-              </div>
-            </Link>
-
-            <Link to={`/chapters/2`}>
-              <div className="Dashboard__subject__bio">
-                <BioIcon />
-                <br />
-                <div className="Dashboard__subject__text">Biology</div>
-              </div>
-            </Link>
-
-            <Link to={`/chapters/6`}>
-              <div className="Dashboard__subject__eng">
-                <EngIcon />
-                <br />
-                <div className="Dashboard__subject__text">English Language</div>
-              </div>
-            </Link>
+            {subjects &&
+              subjects.map((subject) => (
+                <Link key={subject.id} to={`/chapters/${subject.id}`}>
+                  <div
+                    className={`Dashboard__subject__${this.setClassName(
+                      subject.name
+                    )}`}
+                  >
+                    {this.setIcon(subject.name)}
+                    <br />
+                    <div
+                      className={`Dashboard__subject__text ${
+                        subject.name === "Mathematics" &&
+                        "Dashboard__subject__text--math"
+                      } `}
+                    >
+                      {subject.name === "English"
+                        ? "English Language"
+                        : subject.name}
+                    </div>
+                  </div>
+                </Link>
+              ))}
           </div>
         </div>
       </div>
